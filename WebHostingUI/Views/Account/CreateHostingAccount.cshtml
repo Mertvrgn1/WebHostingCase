@@ -1,0 +1,116 @@
+﻿
+@*
+Form tag ı kullanarak yapılışı.*@
+
+@*<form asp-action="CreateHostingAccount" asp-controller="Account" method="post">
+<div class="row">
+    <div class="col-lg-9">
+        <div class="card">
+            <div class="card-header text-uppercase">Hosting Domain Name</div>
+            <div class="card-body">
+                <input type="text" id="HostingDomainName" class="form-control" name="HostingDomainName">
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <div class="card">
+            <div class="card-header text-uppercase">Hosting Domain Package</div>
+            <div class="card-body">
+                <input type="text" id="HostingPackage" class="form-control" name="HostingPackage">
+            </div>
+        </div>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <button class="btn btn-lg btn-gradient-steelgray" type="submit" style="margin-left:13px;">Ekle</button>
+      
+        </div>
+    </div>
+
+</div><!--End Row-->
+
+</form>*@
+
+
+@*
+SweetAlert kullanabilmek için ajax ile yaptım.*@
+
+<div class="row">
+    <div class="col-lg-9">
+        <div class="card">
+            <div class="card-header text-uppercase">Hosting Domain Name</div>
+            <div class="card-body">
+                <input type="text" id="HostingDomainName" class="form-control" name="HostingDomainName">
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <div class="card">
+            <div class="card-header text-uppercase">Hosting Domain Package</div>
+            <div class="card-body">
+                <input type="text" id="HostingPackage" class="form-control" name="HostingPackage">
+            </div>
+        </div>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <button class="btn btn-lg btn-gradient-steelgray" id="btnSave" style="margin-left:13px;">Ekle</button>
+        </div>
+    </div>
+
+</div><!--End Row-->
+
+
+<script>
+    $(function() {
+
+        $("#btnSave").on('click', function(e) {
+            e.preventDefault();
+
+            debugger;
+            var hostingDomainName = $("#HostingDomainName").val();
+            var hostingPackage = $("#HostingPackage").val();
+
+            var dto = {
+                HostingDomainName: hostingDomainName,
+                HostingPackage: hostingPackage
+            };
+
+            $.post('/Account/CreateHostingAccount', { dto: dto }, function(response) {
+                debugger;
+                if (response == "success") {
+                    debugger;
+
+                    Swal.fire({
+                        title: 'Ekleme işlemi gerçekleşti',
+                        icon: 'success',
+                        showDenyButton: false,
+                        showCancelButton: false,
+                        confirmButtonText: 'Tamam',
+                    }).then((result) => {
+                    
+                        if (result.isConfirmed) {
+                            location.href = '/Account/GetAllHostingAccounts';
+                        } else {
+                            location.href = '/Account/GetAllHostingAccounts';
+                        }
+                    })
+                    //location.href = '/Account/GetAllHostingAccounts';
+
+                } else if ((response == "failure")) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Failure',
+                        text: 'Bir hata oluştu',
+                    })
+                }
+            })
+
+        })
+
+    })
+</script>
+
+

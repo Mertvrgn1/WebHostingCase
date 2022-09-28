@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] Web Hosting Project</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="icon" href="~/assets/images/favicon.ico" type="image/x-icon" />
+    <!-- Vector CSS -->
+    <link href="~/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <!-- simplebar CSS-->
+    <link href="~/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+    <!-- Bootstrap core CSS-->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- animate CSS-->
+    <link href="~/assets/css/animate.css" rel="stylesheet" type="text/css" />
+    <!-- Icons CSS-->
+    <link href="~/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <!-- Sidebar CSS-->
+    <link href="~/assets/css/sidebar-menu.css" rel="stylesheet" />
+    <!-- Custom Style-->
+    <link href="~/assets/css/app-style.css" rel="stylesheet" />
+    <!-- skins CSS-->
+    <link href="~/assets/css/skins.css" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+    <!-- start loader -->
+
+    <div id="pageloader-overlay" class="visible incoming"><div class="loader-wrapper-outer"><div class="loader-wrapper-inner"><div class="loader"></div></div></div></div>
+
+    <!-- end loader -->
+    <!-- Start wrapper-->
+
+    <div id="wrapper">
+
+
+        <!--Start sidebar-wrapper-->
+
+        <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true" style="background-color:#3366cc">
+            <div class="brand-logo">
+                <a>
+
+                    <a asp-action="GetAllHostingAccounts" asp-controller="Account"><h6 class="logo-text" style="color:white">Web Hosting Project</h6></a>
+                </a>
+            </div>
+            @*   <div class="user-details">
+            <div class="media align-items-center user-pointer collapsed">
+            <div class="avatar"> <i class="icon-user"></i></div>
+            <br />
+            <div class="media-body">
+            <h6 class="side-user-name">ADMIN</h6>
+            </div>
+            </div>
+            </div>*@
+            <ul class="sidebar-menu">
+
+                @*        <li>
+                <a href="javaScript:void();" class="waves-effect">
+                <i class="zmdi zmdi-view-dashboard"></i> <span>Kazı Kazan Ekranı</span><i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="sidebar-submenu">
+                <li><a href="index.html"><i class="zmdi zmdi-dot-circle-alt"></i> eCommerce</a></li>
+                <li><a href="dashboard-human-resources.html"><i class="zmdi zmdi-dot-circle-alt"></i> Human Resources</a></li>
+                <li><a href="dashboard-digital-marketing.html"><i class="zmdi zmdi-dot-circle-alt"></i> Digital Marketing</a></li>
+                </ul>
+                </li>*@
+
+
+                <li>
+                    <a class="waves-effect" style="color:white" asp-action="CreateHostingAccount" asp-controller="Account" id="mert">
+                        <i class="fa-solid fa-plus"></i> <span>Hosting Domain Oluştur</span>
+                    </a>
+                </li>
+
+
+
+
+
+            </ul>
+
+        </div>
+
+        <!--End sidebar-wrapper-->
+        <!--Start topbar header-->
+
+        <header class="topbar-nav">
+            <nav id="header-setting" class="navbar navbar-expand fixed-top" style="background-color:white
+">
+                <ul class="navbar-nav mr-auto align-items-center">
+                </ul>
+
+
+            </nav>
+        </header>
+
+        <!--End topbar header-->
+
+
+
+        <div class="clearfix"></div>
+
+        <div class="content-wrapper">
+            <div class="container-fluid">
+
+
+                @RenderBody()
+
+            </div>
+        </div>
+
+
+
+        <!--End Dashboard Content-->
+        <!--start overlay-->
+
+        <div class="overlay toggle-menu"></div>
+
+        <!--end overlay-->
+    </div>
+
+    <!-- End container-fluid-->
+    <!--End content-wrapper-->
+    <!--Start Back To Top Button-->
+
+    <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+
+    <!--End Back To Top Button-->
+    <!--Start footer-->
+
+    <footer class="footer">
+        <div class="container">
+            <div class="text-center">
+                Copyright © 2022 RADORE VERİ MERKEZİ
+            </div>
+        </div>
+    </footer>
+
+    <!--End footer-->
+    <!--start color switcher-->
+    @*    <div class="right-sidebar">
+    <div class="switcher-icon">
+    <i class="zmdi zmdi-settings zmdi-hc-spin"></i>
+    </div>
+    <div class="right-sidebar-content">
+
+
+    <p class="mb-0">Header Colors</p>
+    <hr>
+
+    <div class="mb-3">
+    <button type="button" id="default-header" class="btn btn-outline-primary">Default Header</button>
+    </div>
+
+    <ul class="switcher">
+    <li id="header1"></li>
+    <li id="header2"></li>
+    <li id="header3"></li>
+    <li id="header4"></li>
+    <li id="header5"></li>
+    <li id="header6"></li>
+    </ul>
+
+    <p class="mb-0">Sidebar Colors</p>
+    <hr>
+
+    <div class="mb-3">
+    <button type="button" id="default-sidebar" class="btn btn-outline-primary">Default Header</button>
+    </div>
+
+    <ul class="switcher">
+    <li id="theme1"></li>
+    <li id="theme2"></li>
+    <li id="theme3"></li>
+    <li id="theme4"></li>
+    <li id="theme5"></li>
+    <li id="theme6"></li>
+    </ul>
+
+    </div>
+    </div>*@
+
+    <!--end color switcher-->
+    <!--End wrapper-->
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+
+    <!-- simplebar js -->
+    <script src="~/assets/plugins/simplebar/js/simplebar.js"></script>
+    <!-- sidebar-menu js -->
+    <script src="~/assets/js/sidebar-menu.js"></script>
+    <!-- loader scripts -->
+    <script src="~/assets/js/jquery.loading-indicator.js"></script>
+    <!-- Custom scripts -->
+    <script src="~/assets/js/app-script.js"></script>
+    <!-- Chart js -->
+
+    <script src="~/assets/plugins/Chart.js/Chart.min.js"></script>
+    <!-- Vector map JavaScript -->
+    <script src="~/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="~/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- Easy Pie Chart JS -->
+    <script src="~/assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <!-- Sparkline JS -->
+    <script src="~/assets/plugins/sparkline-charts/jquery.sparkline.min.js"></script>
+    <script src="~/assets/plugins/jquery-knob/excanvas.js"></script>
+    <script src="~/assets/plugins/jquery-knob/jquery.knob.js"></script>
+
+    <script>
+        $(function() {
+            $(".knob").knob();
+        });
+    </script>
+    <!-- Index js -->
+    <script src="~/assets/js/index.js"></script>
+
+    @RenderSection("Scripts", required: false)
+@*    @await Component.InvokeAsync("Notyf")*@
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿@model HostingDetailDto
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <center><h3 class="card-title">Hosting Domain</h3></center>
+                <div class="table-responsive">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col"><center>Hosting Domain Name</center> </th>
+                                <th scope="col"><center>Hosting Package</center> </th>
+                                <th scope="col"><center>Message</center> </th>
+                                <th scope="col"><center>Ram Usage</center> </th>
+                                <th scope="col"><center>Ram Max</center> </th>
+                                <th scope="col"><center>Cpu Load</center> </th>
+                                <th scope="col"><center>Incoming Connections</center> </th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td><a class="btn btn-info form-control" style="background-color:#eaf0fa">@Model.HostingDomainName</a></td>
+                                <td><a class="btn btn-info form-control" style="background-color:#eaf0fa">@Model.HostingPackage</a></td>
+                                <td><a class="btn btn-info form-control" style="background-color:#eaf0fa">@Model.Message</a></td>
+                                <td><a class="btn btn-info form-control" style="background-color:#eaf0fa">@Model.RamUsage</a></td>
+                                <td><a class="btn btn-info form-control" style="background-color:#eaf0fa">@Model.RamMax</a></td>
+                                <td><a class="btn btn-info form-control" style="background-color:#eaf0fa">@Model.CpuLoad</a></td>
+                                <td><a class="btn btn-info form-control" style="background-color:#eaf0fa">@Model.IncomingConnections</a></td>
+                                <td>
+
+                                    <div>
+                                        <form asp-action="DeleteHostingAccount" asp-controller="Account" asp-route-HostingDomainName="@Model.HostingDomainName" asp-route-HostingPackage="@Model.HostingPackage" method="post">
+                                            <button type="submit" class="btn btn-danger" style="color:white">Sil</button>
+                                        </form>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

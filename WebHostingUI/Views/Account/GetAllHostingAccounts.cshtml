@@ -1,0 +1,29 @@
+﻿
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <center><h3 class="card-title">Hosting Domain</h3></center>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col"><center>Hosting Domain Name</center> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+                                <tr>
+                                    <td><a class="btn btn-success form-control" style="background-color:yellow" asp-action="GetAccountByHostingDomainName" asp-controller="Account" asp-route-HostingDomainName="@item">@item</a></td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
